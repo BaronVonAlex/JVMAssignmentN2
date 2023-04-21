@@ -20,12 +20,12 @@ public class NumbersChecking {
                 integers[i] = num;
                 i++;
             } catch (NumberFormatException e) {
-                throw new InvalidNumberException("Invalid number format: " + line);
+                throw new InvalidNumberException("Invalid format: " + line);
             }
         }
         reader.close();
         int[] validIntegers = Arrays.copyOf(integers, i);
-        System.out.println("Integers read from file: " + Arrays.toString(validIntegers));
+        System.out.println("Integers from file: " + Arrays.toString(validIntegers));
         return validIntegers;
     }
 
@@ -41,7 +41,7 @@ public class NumbersChecking {
         try {
             int[] integers = readIntegersFromFile("numbers.txt");
             int sum = sumIntArray(integers);
-            System.out.println("Sum of integers: " + sum);
+            System.out.println("Sum of integers from Array: " + sum);
             if (sum == 0) {
                 throw new ArithmeticException("Division by zero");
             }
