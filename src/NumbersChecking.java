@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class NumbersChecking {
 
-    public static int[] readIntegersFromFile(String fileName) throws IOException, InvalidNumberException {
+    public static int[] readIntegersFromFile(String fileName) throws IOException, NumbersException {
         int[] integers = new int[10];
         BufferedReader reader = new BufferedReader(new FileReader(new File("D:\\CodingApps\\JVM Studies\\JVMAssignmentN2\\src\\numbers.txt")));
         String line;
@@ -15,12 +15,12 @@ public class NumbersChecking {
             try {
                 int num = Integer.parseInt(line.trim());
                 if (num < 0) {
-                    throw new InvalidNumberException("Invalid number: " + num);
+                    throw new NumbersException("Invalid number: " + num);
                 }
                 integers[i] = num;
                 i++;
             } catch (NumberFormatException e) {
-                throw new InvalidNumberException("Invalid format: " + line);
+                throw new NumbersException("Invalid format: " + line);
             }
         }
         reader.close();
@@ -49,7 +49,7 @@ public class NumbersChecking {
             System.out.println("Result of division: " + result);
         } catch (IOException e) {
             System.out.println("An error happened while reading the file: " + e.getMessage());
-        } catch (InvalidNumberException e) {
+        } catch (NumbersException e) {
             System.out.println("Invalid number: " + e.getMessage());
         } catch (ArithmeticException e) {
             System.out.println("An arithmetic error happened: " + e.getMessage());
